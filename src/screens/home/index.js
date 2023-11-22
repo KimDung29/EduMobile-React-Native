@@ -7,10 +7,10 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 import {MODES, PADDINGS} from '../../constants';
 import Client from '../../api/client';
-import HomeHeader from './HomeHeader';
-import HorizontalFilter from '../../components/common/horizontal/filter';
-import HorizontalListImage from '../../components/common/horizontal/image';
-import HorizontalInstructor from '../../components/common/horizontal/instructor';
+import Filter from '../../components/common/horizontal/filter';
+import ListImage from '../../components/common/horizontal/image';
+import Instructor from '../../components/common/horizontal/instructor';
+import Header from './Header';
 
 const Home = ({navigation}) => {
   const {isDarkMode} = useSelector(state => state.common);
@@ -26,38 +26,36 @@ const Home = ({navigation}) => {
           paddingBottom: PADDINGS.medium,
         },
       ]}>
-      <>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={dynamicStyles.homeWrapper}>
-          <HomeHeader navigation={navigation} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={dynamicStyles.homeWrapper}>
+        <Header navigation={navigation} />
 
-          <HorizontalFilter
-            queryKey={'category_filter'}
-            path={Client.categoryFilter}
-            navigation={navigation}
-          />
+        <Filter
+          queryKey={'category_filter'}
+          path={Client.categoryFilter}
+          navigation={navigation}
+        />
 
-          <HorizontalListImage
-            queryKey={'popularCourses'}
-            path={Client.popularCourses}
-            navigation={navigation}
-            title={'home.popular'}
-          />
-          <HorizontalListImage
-            queryKey={'newCourses'}
-            path={Client.newCourses}
-            navigation={navigation}
-            title={'home.new'}
-          />
-          <HorizontalInstructor
-            queryKey={'instructors'}
-            path={Client.instructors}
-            navigation={navigation}
-            title={'instructorScreen.title'}
-          />
-        </ScrollView>
-      </>
+        <ListImage
+          queryKey={'popularCourses'}
+          path={Client.popularCourses}
+          navigation={navigation}
+          title={'home.popular'}
+        />
+        <ListImage
+          queryKey={'newCourses'}
+          path={Client.newCourses}
+          navigation={navigation}
+          title={'home.new'}
+        />
+        <Instructor
+          queryKey={'instructors'}
+          path={Client.instructors}
+          navigation={navigation}
+          title={'instructorScreen.title'}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };

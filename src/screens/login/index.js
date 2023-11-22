@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, Image, ScrollView} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  Image,
+  ScrollView,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {icons} from '../../constants';
 import styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
@@ -75,40 +82,47 @@ const Login = ({navigation}) => {
         title={''}
         navigation={navigation}
       />
-      <ScrollView>
-        <View style={dynamicStyles.container}>
-          <Image source={icons.graduation} style={dynamicStyles.iconEdu} />
-          <Text style={dynamicStyles.title}>{i18n.t('loginScreen.title')}</Text>
-
-          <Form
-            buttonTitle={'login'}
-            onSubmitEditing={handleLogin}
-            formData={FormLogin}
-            onChangeText={(fieldName, text) =>
-              handleChangeInput(fieldName, text)
-            }
-            value={values}
-            error={error}
-          />
-
-          <TouchableOpacity onPress={() => {}}>
-            <Text style={dynamicStyles.text}>
-              {i18n.t('loginScreen.forgotPassword')}
+      <KeyboardAvoidingView
+        style={dynamicStyles.keyboard}
+        behavior="padding"
+        enabled>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={dynamicStyles.container}>
+            <Image source={icons.graduation} style={dynamicStyles.iconEdu} />
+            <Text style={dynamicStyles.title}>
+              {i18n.t('loginScreen.title')}
             </Text>
-          </TouchableOpacity>
 
-          <View style={dynamicStyles.switchPage}>
-            <Text style={dynamicStyles.linkToPage}>
-              {i18n.t('loginScreen.registerText')}
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('register')}>
-              <Text style={dynamicStyles.linkToPage}>
-                {i18n.t('loginScreen.register')}
+            <Form
+              buttonTitle={'login'}
+              onSubmitEditing={handleLogin}
+              formData={FormLogin}
+              onChangeText={(fieldName, text) =>
+                handleChangeInput(fieldName, text)
+              }
+              value={values}
+              error={error}
+            />
+
+            <TouchableOpacity onPress={() => {}}>
+              <Text style={dynamicStyles.text}>
+                {i18n.t('loginScreen.forgotPassword')}
               </Text>
             </TouchableOpacity>
+
+            <View style={dynamicStyles.switchPage}>
+              <Text style={dynamicStyles.linkToPage}>
+                {i18n.t('loginScreen.registerText')}
+              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('register')}>
+                <Text style={dynamicStyles.linkToPage}>
+                  {i18n.t('loginScreen.register')}
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 };

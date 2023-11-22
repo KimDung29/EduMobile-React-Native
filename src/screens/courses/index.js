@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import i18n from '../../config/translations';
 import {setIsLoading} from '../../redux/slice/commonSlice';
 import PageHeader from '../../components/common/page_header';
-import HorizontalFilter from '../../components/common/horizontal/filter';
+import Filter from '../../components/common/horizontal/filter';
 
 const Courses = ({navigation}) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Courses = ({navigation}) => {
         navigation={navigation}
       />
       <View style={dynamicStyles.container}>
-        <HorizontalFilter
+        <Filter
           queryKey={'category_filter'}
           path={Client.categoryFilter}
           navigation={navigation}

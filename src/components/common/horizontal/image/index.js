@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useEffect, useState} from 'react';
 import {setIsLoading} from '../../../../redux/slice/commonSlice';
 
-const HorizontalListImage = ({navigation, title, queryKey, path}) => {
+const ListImage = ({navigation, title, queryKey, path}) => {
   const dispatch = useDispatch();
   const {isDarkMode} = useSelector(state => state.common);
   const [like, setLike] = useState({});
@@ -65,4 +65,4 @@ const HorizontalListImage = ({navigation, title, queryKey, path}) => {
   );
 };
 
-export default HorizontalListImage;
+export default ListImage;

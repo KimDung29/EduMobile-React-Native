@@ -8,7 +8,7 @@ import {setUser} from '../../redux/slice/userSlice.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {toggleTheme} from '../../redux/slice/commonSlice.js';
 
-const HomeHeader = ({navigation}) => {
+const Header = ({navigation}) => {
   const dispatch = useDispatch();
   const {isDarkMode} = useSelector(state => state.common);
   const {user} = useSelector(state => state.user);
@@ -104,4 +104,4 @@ const HomeHeader = ({navigation}) => {
   );
 };
 
-export default HomeHeader;
+export default Header;

@@ -1,4 +1,10 @@
-import {View, Text, Image, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  KeyboardAvoidingView,
+} from 'react-native';
 import React, {useState} from 'react';
 import {icons} from '../../constants';
 import styles from './style';
@@ -88,33 +94,38 @@ const Register = ({navigation}) => {
     }
   };
   return (
-    <>
+    <View style={dynamicStyles.container}>
       <PageHeader
         iconLeft={'goback'}
         iconRight={''}
         title={''}
         navigation={navigation}
       />
-      <ScrollView>
-        <View style={dynamicStyles.container}>
-          <Image source={icons.graduation} style={dynamicStyles.icon} />
-          <Text style={dynamicStyles.title}>
-            {i18n.t('registerScreen.title')}
-          </Text>
+      <KeyboardAvoidingView
+        style={dynamicStyles.keyboard}
+        behavior="padding"
+        enabled>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={dynamicStyles.wrapper}>
+            <Image source={icons.graduation} style={dynamicStyles.icon} />
+            <Text style={dynamicStyles.title}>
+              {i18n.t('registerScreen.title')}
+            </Text>
 
-          <Form
-            buttonTitle={'registerScreen.btnSubmit'}
-            onSubmitEditing={handleRegistration}
-            formData={FORM_REGISTER}
-            onChangeText={(fieldName, text) =>
-              handleChangeInput(fieldName, text)
-            }
-            value={values}
-            error={error}
-          />
-        </View>
-      </ScrollView>
-    </>
+            <Form
+              buttonTitle={'registerScreen.btnSubmit'}
+              onSubmitEditing={handleRegistration}
+              formData={FORM_REGISTER}
+              onChangeText={(fieldName, text) =>
+                handleChangeInput(fieldName, text)
+              }
+              value={values}
+              error={error}
+            />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 

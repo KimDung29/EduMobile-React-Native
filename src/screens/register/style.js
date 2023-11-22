@@ -18,6 +18,14 @@ const {width, height} = Dimensions.get('window');
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
+      flex: 1,
+    },
+    keyboard: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+    wrapper: {
       justifyContent: 'center',
       alignItems: 'center',
       paddingBottom: PADDINGS.large,

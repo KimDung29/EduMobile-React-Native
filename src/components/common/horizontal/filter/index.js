@@ -20,7 +20,7 @@ const COLOR_LIST = [
   '#f49097',
   '#f5e960',
 ];
-const HorizontalFilter = ({navigation, path, queryKey, courses}) => {
+const Filter = ({navigation, path, queryKey, courses}) => {
   const dispatch = useDispatch();
   const {data, isLoading} = useDataFetching(queryKey, path);
 
@@ -66,7 +66,7 @@ const HorizontalFilter = ({navigation, path, queryKey, courses}) => {
   );
 };
 
-export default HorizontalFilter;
+export default Filter;
 
 const styles = StyleSheet.create({
   container: {

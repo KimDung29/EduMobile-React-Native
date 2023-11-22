@@ -11,7 +11,7 @@ import {useDataFetching} from '../../../../hook/useQueryHooks';
 import {useEffect} from 'react';
 import {setIsLoading} from '../../../../redux/slice/commonSlice';
 
-const HorizontalInstructor = ({navigation, path, queryKey, title}) => {
+const Instructor = ({navigation, path, queryKey, title}) => {
   const dispatch = useDispatch();
   const {isDarkMode} = useSelector(state => state.common);
 
@@ -86,4 +86,4 @@ const HorizontalInstructor = ({navigation, path, queryKey, title}) => {
   );
 };
 
-export default HorizontalInstructor;
+export default Instructor;

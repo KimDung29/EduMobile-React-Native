@@ -12,9 +12,9 @@ import PageHeader from '../../../components/common/page_header';
 
 const languageOptions = [
   {label: 'English', value: 'en'},
-  {label: 'Korean', value: 'ko'},
-  {label: 'Portuguese', value: 'po'},
-  {label: 'Spanish', value: 'sp'},
+  {label: '한국인', value: 'ko'},
+  {label: 'Português', value: 'pt'},
+  {label: 'Española', value: 'es'},
 ];
 
 const LanguageSetting = ({navigation}) => {

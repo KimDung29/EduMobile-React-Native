@@ -20,6 +20,11 @@ const styles = ({isDarkMode}) =>
       height: height * 0.1,
       tintColor: !isDarkMode ? MODES.white : MODES.yellow,
     },
+    keyboard: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
     title: {
       ...TEXTS.xLargeHeader(isDarkMode),
     },
