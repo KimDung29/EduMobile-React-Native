@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-shadow */
 import {StyleSheet} from 'react-native';
 import {
@@ -7,6 +8,9 @@ import {
   SIZES,
   TEXTS,
   COLORS,
+  bgColor,
+  TEXT,
+  BORDER
 } from '../../../constants';
 import {Dimensions} from 'react-native';
 
@@ -15,51 +19,47 @@ const styles = ({isDarkMode}) =>
   StyleSheet.create({
     // Form elements
     container: {
-      width: width * 0.85,
-      marginVertical: MARGINS.xxMedium,
+      width: width * 0.9,
     },
     checkboxWrapper: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginVertical: MARGINS.xSmall,
+      marginVertical: 12,
     },
     checkboxLabel: {
-      paddingLeft: PADDINGS.xxTiny,
-      ...TEXTS.mediumContent(isDarkMode),
+      paddingLeft: 8,
+      ...TEXT.text16(isDarkMode),
     },
     checkboxIcon: {
-      fontSize: 20,
-      color: !isDarkMode ? MODES.white : MODES.black,
+      ...TEXT.text20(isDarkMode),
     },
     formLabel: {
-      marginTop: MARGINS.xxMedium,
-      marginBottom: MARGINS.xTiny,
-      ...TEXTS.mediumContent(isDarkMode),
+      marginTop: 20,
+      marginBottom: 6,
+      ...TEXT.text16(isDarkMode),
     },
     textInput: isDarkMode => ({
-      borderWidth: 1,
-      borderColor: !isDarkMode ? COLORS.white : 'transparent',
-      borderRadius: SIZES.small,
-      color: COLORS.black,
-      padding: SIZES.medium,
-      backgroundColor: !isDarkMode ? MODES.white : MODES.yellow,
+      ...BORDER.ra8_w0(isDarkMode),
+      ...TEXT.text14(isDarkMode),
+      padding: 16,
+      backgroundColor: !isDarkMode ? '#ccc' : 'yellow',
     }),
 
     btnPress: {
-      backgroundColor: !isDarkMode ? MODES.white : MODES.yellow,
-      padding: SIZES.medium,
-      marginVertical: MARGINS.small,
-      borderRadius: SIZES.xxTiny,
+      backgroundColor: !isDarkMode ? '#ccc' : 'yellow',
+      padding: 16,
+      marginVertical: 10,
+      ...BORDER.ra8_w0(isDarkMode),
     },
     btnText: {
       textAlign: 'center',
-      fontSize: SIZES.medium,
-      color: COLORS.black,
+      fontSize: 16,
+      color: '#000',
     },
 
     error: {
-      color: COLORS.red,
-      fontSize: SIZES.medium,
+      color: 'red',
+      fontSize: 16,
     },
   });
 

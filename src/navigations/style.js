@@ -1,30 +1,54 @@
-import {StyleSheet} from 'react-native';
-import {COLORS, PADDINGS, SIZES} from '../constants';
+/* eslint-disable prettier/prettier */
+import {Platform, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.white,
-    height: 75,
-    borderTopLeftRadius: SIZES.large,
-    borderTopRightRadius: SIZES.large,
+    // height: Platform.OS === 'ios' ? 87 : 67,
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    borderColor: '#E9E9E9',
+    position: 'absolute',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
+    elevation: 10,
   },
-  selectedTab: {
-    color: COLORS.black,
-    borderTopWidth: 3.8,
-    borderTopColor: COLORS.yellow,
-    borderTopRightRadius: SIZES.small,
-    borderTopLeftRadius: SIZES.small,
-  },
+
   label: {
-    paddingBottom: PADDINGS.tiny,
+    fontSize: 12,
+    // fontFamily: 'DMRegular',
+    marginVertical: 5,
     textAlign: 'center',
     textAlignVertical: 'center',
-    height: 40,
   },
   icon: {
-    fontSize: SIZES.xxMedium,
-    paddingTop: PADDINGS.small,
-    paddingHorizontal: PADDINGS.xSmall,
+    fontSize: 18,
+    paddingTop: 5,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+  activeBar: {
+    height: 4,
+    backgroundColor: '#0961F5',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  noActiveBar: {
+    height: 4,
+  },
+  active: {
+    color: '#0961F5',
+  },
+  noActive: {
+    color: '#797979',
   },
 });
 export default styles;

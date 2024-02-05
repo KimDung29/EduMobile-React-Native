@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {useSelector} from 'react-redux';
@@ -20,6 +21,8 @@ const MyCourse = ({navigation}) => {
       <View
         style={{
           flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
           backgroundColor: !isDarkMode ? MODES.black : MODES.white,
         }}>
         <View>

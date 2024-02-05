@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
   MODES,
@@ -9,6 +10,7 @@ import {
   TEXTS,
   BORDERS,
   SHADOWS,
+  bgColor, textColor, TEXT, FLEX, BORDER,
 } from '../../constants';
 
 import {Dimensions} from 'react-native';
@@ -16,90 +18,76 @@ import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
 const styles = ({isDarkMode}) =>
-  StyleSheet.create({
+StyleSheet.create({
+    container: { },
     headerWrapper: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      paddingVertical: PADDINGS.small,
+      marginTop: 10,
+      marginBottom: 5,
+      ...FLEX.rowBetween,
     },
     text: {
-      paddingLeft: PADDINGS.small,
-      ...TEXTS.xMediumHeader(isDarkMode),
+      ...TEXT.text16(isDarkMode),
     },
     btnContainer: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingHorizontal: PADDINGS.medium,
+      ...FLEX.rowStart,
+      paddingHorizontal: 16,
     },
-    btnImage: dimension => ({
-      width: dimension,
-      height: dimension,
-      resizeMode: 'cover',
-      tintColor: !isDarkMode ? MODES.white : MODES.yellow,
-    }),
-
     // USER INFORMATION
     userInfoHeader: {
       flexDirection: 'row',
-      paddingHorizontal: PADDINGS.medium,
+      paddingHorizontal: 16,
     },
     userInfoHeaderImg: {
       width: 40,
       height: 40,
-      borderRadius: 50,
-      marginRight: MARGINS.large,
-      borderColor: COLORS.gray2,
-      borderWidth: 1,
+      marginRight: 24,
+      ...BORDER.ra50_w1(isDarkMode),
     },
     userInfoText: {
-      fontSize: SIZES.xSmall,
-      color: !isDarkMode ? COLORS.white : COLORS.black,
+      ...TEXT.text12(isDarkMode),
     },
     userInfoOverView: {
-      margin: MARGINS.medium,
-      padding: PADDINGS.medium,
-      // backgroundColor: COLORS.white,
-      color: COLORS.black,
-      borderWidth: 1,
-      borderColor: !isDarkMode ? COLORS.gray : 'transparent',
-      borderRadius: SIZES.small,
+      margin: 16,
+      padding: 16,
+      ...TEXT.text12(isDarkMode),
+      ...BORDER.ra12_w1(isDarkMode),
     },
-    xMediumHeader: {
-      paddingTop: PADDINGS.medium,
-      ...TEXTS.boldContent(isDarkMode),
+    textContent: {
+      // paddingTop: 16,
+      ...TEXT.text14(isDarkMode),
     },
 
     // DARK MODE
-    container: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginHorizontal: MARGINS.medium,
+    containerHeader: {
+      ...FLEX.rowBetween,
+      marginHorizontal: 16,
     },
     title: {
-      paddingTop: PADDINGS.medium,
-      ...TEXTS.boldContent(isDarkMode),
+      ...TEXT.text12(isDarkMode),
     },
     touchBtn: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingHorizontal: PADDINGS.xTiny,
-      backgroundColor: !isDarkMode ? MODES.white : MODES.gray2,
+      ...FLEX.rowBetween,
       ...BORDERS.middle,
+      paddingHorizontal: 6,
+      backgroundColor: bgColor(!isDarkMode),
     },
     icon: {
-      fontSize: 20,
-      color: 'black',
+      ...TEXT.text16(!isDarkMode),
     },
     darModeText: {
-      marginVertical: MARGINS.xxTiny,
-      paddingHorizontal: PADDINGS.small,
-      fontSize: SIZES.xxSmall,
-      color: COLORS.black,
+      marginVertical: 4,
+      paddingLeft: 4,
+      ...TEXT.text12(!isDarkMode),
     },
+    cateBtn: backgroundColor => ({
+      marginTop: 30,
+      marginBottom: 16,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      marginHorizontal:6,
+      ...BORDER.ra18_w0(),
+      backgroundColor: backgroundColor ? backgroundColor : 'white',
+    }),
   });
 
 export default styles;

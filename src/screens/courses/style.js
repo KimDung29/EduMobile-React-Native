@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {MODES, COLORS, PADDINGS, MARGINS, SIZES, TEXTS} from '../../constants';
+import {MODES, COLORS,FLEX, PADDINGS, MARGINS,BORDER, SIZES, TEXT, MODE, bgColor} from '../../constants';
 
 import {Dimensions} from 'react-native';
 
@@ -8,58 +9,90 @@ const {width, height} = Dimensions.get('window');
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
-      backgroundColor: !isDarkMode ? MODES.black : MODES.white,
+      flex: 1,
+      backgroundColor: bgColor(isDarkMode),
     },
     coursesWrapper: {
       // padding: PADDINGS.xLarge,
-      margin: MARGINS.medium,
+      margin: 16,
     },
     coursesImageContainer: {
       position: 'relative',
     },
+    cateWrap: {
+      // flexDirection: 'row',
+      position: 'absolute',
+      left: 10, 
+      bottom: 10,
+      paddingVertical: 4,
+      paddingHorizontal: 8,
+      ...BORDER.ra12_w0(isDarkMode),
+      backgroundColor:  '#797979',
+    },
+    cateText: {
+      ...TEXT.textCate14,
+    },
     coursesContent: {
-      paddingTop: PADDINGS.medium,
+      paddingVertical: 5,
+    },
+    courseName: {
+      ...TEXT.textB14(isDarkMode),
+      marginVertical: 5,
     },
     coursesRow: {
-      flexDirection: 'row',
+      ...FLEX.rowStart,
     },
     courseClock: {
       width: width * 0.036,
       height: height * 0.022,
-      tintColor: COLORS.yellow,
+      tintColor: 'yellow',
     },
     coursesImage: {
       width: width * 0.92,
       height: height * 0.3,
-      borderRadius: SIZES.xTiny,
+      borderRadius: 6,
       resizeMode: 'cover',
     },
     coursesText: {
-      ...TEXTS.mediumContent(isDarkMode),
-      paddingVertical: PADDINGS.tiny / 1.5,
+      ...TEXT.text14(isDarkMode),
+      paddingVertical: 2,
     },
     duration: {
       fontWeight: '700',
     },
     durationWrapper: {
-      ...TEXTS.smallContent(isDarkMode),
-      marginLeft: MARGINS.tiny,
+      ...TEXT.text14(isDarkMode),
+      marginLeft: 6,
     },
     heartIconWrapper: {
       position: 'absolute',
       top: 10,
       right: 10,
-      backgroundColor: COLORS.gray2,
-      padding: PADDINGS.tiny,
-      borderRadius: SIZES.small,
+      backgroundColor: "#ffffff",
+      padding: 6,
+      borderRadius: 4,
     },
-    xMediumHeader: {
-      ...TEXTS.xMediumHeader(isDarkMode),
+    loading: {
+      color: '#fff',
+      textAlign: 'center',
     },
-    boldContent: {
-      paddingVertical: PADDINGS.tiny,
-      ...TEXTS.boldContent(isDarkMode),
+    touchBtn: {
+      paddingHorizontal: 12,
+      paddingTop: 6,
+      paddingBottom: 10,
+      marginHorizontal: 6,
+      ...BORDER.ra18_w0(),
+      ...FLEX.columnCenter,
     },
+    selected: {
+      backgroundColor: '#000',
+    },
+    normal: backgroundColor =>  ({
+      backgroundColor: backgroundColor ? backgroundColor : '#fff',
+    }),
+    allBg: {
+      bgColor: 'red'
+    }
   });
 
 export default styles;

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabs from '../navigations/BottomTabs';
@@ -9,7 +10,31 @@ import PasswordSetting from './settings/password';
 import DeleteAccountSetting from './settings/delete_account';
 import LanguageSetting from './settings/language';
 import Settings from './settings';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
+const {width} = Dimensions.get('window');
 
+const extraHeaderConfig =
+  PixelRatio.get() <= 2 && Platform.OS === 'ios' ? {minWidth: 800} : {};
+
+const headerStyle = {
+  backgroundColor: '#000',
+  borderWidth: 0,
+  borderBottomColor: 'transparent',
+  shadowColor: 'transparent',
+  elevation: 0,
+  shadowRadius: 0,
+  shadowOffset: {
+    height: 0,
+  },
+};
+
+const headerTitleStyle = {
+  alignSelf: 'center',
+  width: width * 0.86,
+  textAlign: 'center',
+  fontSize: 19,
+  ...extraHeaderConfig,
+};
 const AppNavigation = () => {
   const Stack = createStackNavigator();
 
@@ -21,6 +46,8 @@ const AppNavigation = () => {
         gesturesEnabled: true,
         headerTintColor: '#000',
         headerBackTitle: '',
+        headerStyle,
+        headerTitleStyle,
         headerShown: false,
       }}>
       <Stack.Screen name="HomeScreen" component={BottomTabs} />

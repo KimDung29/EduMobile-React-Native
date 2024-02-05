@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -16,6 +18,7 @@ import {UseMutationHook} from '../../hook/useQueryHooks';
 import {setUser} from '../../redux/slice/userSlice';
 import PageHeader from '../../components/common/page_header';
 import Form from '../../components/common/form';
+import { useTranslation } from 'react-i18next';
 
 const FormLogin = [
   {
@@ -33,6 +36,7 @@ const FormLogin = [
 ];
 
 const Login = ({navigation}) => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [error, setError] = useState('');
   const {isDarkMode} = useSelector(state => state.common);
@@ -75,54 +79,47 @@ const Login = ({navigation}) => {
 
   // console.log('user: ', user);
   return (
-    <View>
+    <View style={dynamicStyles.container}>
       <PageHeader
         iconLeft={'goback'}
         iconRight={''}
         title={''}
         navigation={navigation}
       />
-      <KeyboardAvoidingView
-        style={dynamicStyles.keyboard}
-        behavior="padding"
-        enabled>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={dynamicStyles.container}>
-            <Image source={icons.graduation} style={dynamicStyles.iconEdu} />
-            <Text style={dynamicStyles.title}>
-              {i18n.t('loginScreen.title')}
+      <View style={dynamicStyles.wrapper}>
+        <Image source={icons.graduation} style={dynamicStyles.iconEdu} />
+        <Text style={dynamicStyles.title}>
+          {t('loginScreen.title')}
+        </Text>
+
+        <Form
+          buttonTitle={'login'}
+          onSubmitEditing={handleLogin}
+          formData={FormLogin}
+          onChangeText={(fieldName, text) =>
+            handleChangeInput(fieldName, text)
+          }
+          value={values}
+          error={error}
+        />
+
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={dynamicStyles.text}>
+            {t('loginScreen.forgotPassword')}
+          </Text>
+        </TouchableOpacity>
+
+        <View style={dynamicStyles.switchPage}>
+          <Text style={dynamicStyles.linkToPage}>
+            {t('loginScreen.registerText')}
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+            <Text style={dynamicStyles.linkToPage}>
+              {t('loginScreen.register')}
             </Text>
-
-            <Form
-              buttonTitle={'login'}
-              onSubmitEditing={handleLogin}
-              formData={FormLogin}
-              onChangeText={(fieldName, text) =>
-                handleChangeInput(fieldName, text)
-              }
-              value={values}
-              error={error}
-            />
-
-            <TouchableOpacity onPress={() => {}}>
-              <Text style={dynamicStyles.text}>
-                {i18n.t('loginScreen.forgotPassword')}
-              </Text>
-            </TouchableOpacity>
-
-            <View style={dynamicStyles.switchPage}>
-              <Text style={dynamicStyles.linkToPage}>
-                {i18n.t('loginScreen.registerText')}
-              </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('register')}>
-                <Text style={dynamicStyles.linkToPage}>
-                  {i18n.t('loginScreen.register')}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };

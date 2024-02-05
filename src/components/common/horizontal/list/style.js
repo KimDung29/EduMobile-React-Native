@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
   MODES,
@@ -9,6 +10,7 @@ import {
   TEXTS,
   BORDERS,
   SHADOWS,
+  TEXT,
 } from '../../../../constants';
 
 import {Dimensions} from 'react-native';
@@ -19,40 +21,40 @@ const styles = ({isDarkMode}) =>
   StyleSheet.create({
     // Horizontal list
     container: {
-      marginVertical: MARGINS.xSmall,
+      marginVertical: 10,
+    },
+    title: {
+      ...TEXT.text16(isDarkMode),
+      marginHorizontal: 16,
     },
     wrapper: {
       position: 'relative',
     },
-    xMediumHeader: {
-      ...TEXTS.xMediumHeader(isDarkMode),
-      marginHorizontal: MARGINS.medium,
-    },
     touchImg: {
-      marginVertical: MARGINS.medium,
-      marginLeft: MARGINS.medium,
+      marginVertical: 10,
+      marginLeft: 16,
       width: width * 0.6,
     },
 
     img: {
       width: width * 0.6,
       height: height * 0.2,
-      borderRadius: SIZES.xTiny,
+      borderRadius: 4,
       resizeMode: 'contain',
       objectFit: true,
     },
 
     content: {
-      ...TEXTS.mediumContent(isDarkMode),
-      marginTop: MARGINS.xTiny,
+      ...TEXT.text14(isDarkMode),
+      marginTop: 5,
     },
     heartIconWrapper: {
       position: 'absolute',
       top: 10,
       right: 10,
-      backgroundColor: COLORS.gray2,
-      padding: PADDINGS.tiny,
-      borderRadius: SIZES.xTiny,
+      backgroundColor: '#fff',
+      padding: 3,
+      borderRadius: 4,
     },
   });
 

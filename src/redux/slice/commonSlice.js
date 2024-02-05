@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 import {createSlice} from '@reduxjs/toolkit';
 
 const commonSlice = createSlice({
   name: 'common',
   initialState: {
-    isDarkMode: false,
+    isDarkMode: true,
     isLoading: false,
+    isLoadMore: false,
     language: 'en',
   },
   reducers: {
@@ -14,11 +16,15 @@ const commonSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setLanguage: (state, actions) => {
-      state.language = actions.payload;
+    setIsLoadMore: (state, action) => {
+      state.isLoadMore = action.payload;
     },
+    setLanguage: (state, action) => {
+      state.language = action.payload;
+    },
+
   },
 });
 
-export const {toggleTheme, setIsLoading, setLanguage} = commonSlice.actions;
+export const {toggleTheme, setIsLoading,setIsLoadMore, setLanguage} = commonSlice.actions;
 export default commonSlice.reducer;

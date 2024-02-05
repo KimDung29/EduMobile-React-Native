@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {MODES, PADDINGS, MARGINS, TEXTS} from '../../constants';
+import {MODES, PADDINGS, MARGINS, TEXT, bgColor} from '../../constants';
 
 import {Dimensions} from 'react-native';
 
@@ -8,35 +9,31 @@ const {width, height} = Dimensions.get('window');
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
+      flex: 1,
+      backgroundColor: bgColor(isDarkMode),
+    },
+    wrapper: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: MARGINS.xLarge,
-      paddingBottom: PADDINGS.large,
-      backgroundColor: !isDarkMode ? MODES.black : MODES.white,
-      height: height * 0.92,
     },
     iconEdu: {
       width: width * 0.2,
       height: height * 0.1,
-      tintColor: !isDarkMode ? MODES.white : MODES.yellow,
+      tintColor:  'yellow',
     },
-    keyboard: {
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-    },
+
     title: {
-      ...TEXTS.xLargeHeader(isDarkMode),
+      ...TEXT.text26(isDarkMode),
     },
     text: {
-      color: !isDarkMode ? MODES.yellow : MODES.blue,
+      color: isDarkMode ? "yellow" : "blue",
     },
     linkToPage: {
       textDecorationLine: 'underline',
-      color: !isDarkMode ? MODES.yellow : MODES.blue,
+      color: !isDarkMode ? "yellow" : "blue",
     },
     switchPage: {
-      marginVertical: MARGINS.small,
+      marginVertical: 10,
       flexDirection: 'row',
     },
   });

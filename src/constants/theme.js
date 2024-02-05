@@ -1,3 +1,10 @@
+/* eslint-disable no-shadow */
+/* eslint-disable prettier/prettier */
+import {store} from '../redux/store';
+const currentState = store.getState();
+const {isDarkMode} = currentState.common;
+
+
 const COLORS = {
   primary: '#312651',
   secondary: '#444262',
@@ -70,6 +77,7 @@ const SIZES = {
   xxLarge: 40,
   xxxLarge: 50,
 };
+
 const MODES = {
   white: '#FFFFFF',
   yellow: '#ffd900',
@@ -77,6 +85,18 @@ const MODES = {
   gray2: '#C1C0C8',
   green: '#008000',
 };
+const DARKMODE = {
+  white: '#FFFFFF',
+  yellow: '#ffd900',
+  black: '#2a2929c0',
+  gray2: '#C1C0C8',
+  green: '#008000',
+}
+
+const LIGHTMODE = {
+  white: '#FFFFFF',
+  black: '#000',
+}
 
 const FONTS = {
   regular: 'DMRegular',
@@ -84,6 +104,130 @@ const FONTS = {
   bold: 'DMBold',
 };
 
+const MODE = {
+  darkText: '#fff',
+  darkBg: '#2a2929c0',
+  lightText: '#000',
+  lightBg: '#fff',
+  darkBorder: 'transparent',
+  lightBorder: '#C1C0C8',
+};
+
+ const bgColor = (isDarkMode) => isDarkMode ? MODE.darkBg : MODE.lightBg;
+ const textColor = (isDarkMode) => isDarkMode ? MODE.darkText : MODE.lightText;
+ const borderColor = (isDarkMode) => isDarkMode ? MODE.darkBorder : MODE.lightBorder;
+
+const TEXT = {
+  text12: isDarkMode => ({
+    fontSize: 12,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+  }),
+  text14: isDarkMode => ({
+    fontSize: 14,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+  }),
+  text16: isDarkMode => ({
+    fontSize: 16,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+  }),
+  text20: isDarkMode => ({
+    fontSize: 20,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+  }),
+  text26: isDarkMode => ({
+    fontSize: 26,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+  }),
+  textB14: isDarkMode => ({
+    fontSize: 14,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+    fontWeight: '700',
+  }),
+  textB16: isDarkMode => ({
+    fontSize: 16,
+    color: textColor(isDarkMode),
+    fontFamily: FONTS.regular,
+    fontWeight: '700',
+  }),
+  textCate14: {
+    fontSize: 14,
+    color: '#fff',
+    fontFamily: FONTS.regular,
+  },
+};
+
+const FLEX = {
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rowBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowStart: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  rowEnd: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flext-end',
+  },
+  columnCenter: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}
+
+const BORDER = {
+  ra32_w0:(isDarkMode) => ({
+    borderTopWidth: 0,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra8_w0:(isDarkMode) => ({
+    borderTopWidth: 0,
+    borderRadius: 8,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra12_w0:(isDarkMode) => ({
+    borderTopWidth: 0,
+    borderRadius: 12,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra12_w1: (isDarkMode) => ({
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra18_w1: (isDarkMode) => ({
+    borderWidth: 1,
+    borderRadius: 18,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra18_w0: (isDarkMode) => ({
+    borderWidth: 0,
+    borderRadius: 18,
+    borderColor: borderColor(isDarkMode),
+  }),
+  ra50_w1: (isDarkMode) => ({
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: borderColor(isDarkMode),
+  }),
+}
 const TEXTS = {
   smallContent: isDarkMode => ({
     fontSize: SIZES.xSmall,
@@ -115,26 +259,27 @@ const TEXTS = {
   }),
 };
 
+
 const BORDERS = {
   small: {
     borderTopWidth: 0,
-    borderTopLeftRadius: SIZES.xLarge,
-    borderTopRightRadius: SIZES.xLarge,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
     borderColor: 'transparent',
   },
   middle: {
     borderWidth: 1,
-    borderRadius: SIZES.xMedium,
+    borderRadius: 18,
     borderColor: COLORS.gray4,
   },
   middle2: {
     borderWidth: 1,
-    borderRadius: SIZES.xMedium,
+    borderRadius: 18,
     borderColor: '#bfbabab1',
   },
   middle3: {
     borderWidth: 1,
-    borderRadius: SIZES.xMedium,
+    borderRadius: 18,
     borderColor: 'transparent',
   },
 };
@@ -172,6 +317,9 @@ const SHADOWS = {
   },
 };
 
+
+
+
 export {
   MODES,
   COLORS,
@@ -182,4 +330,11 @@ export {
   TEXTS,
   BORDERS,
   SHADOWS,
+  DARKMODE,
+  LIGHTMODE,
+  MODE,
+  TEXT,
+  FLEX,
+  BORDER,
+  bgColor
 };

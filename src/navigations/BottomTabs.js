@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/react-in-jsx-scope */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import styles from './style';
 import i18n from '../config/translations';
 import {useSelector} from 'react-redux';
@@ -15,11 +16,13 @@ import Wishlist from '../screens/wishlist';
 import MyProfile from '../screens/myProfile';
 import Courses from '../screens/courses';
 
+const {width} = Dimensions.get('window');
 const Stack = createStackNavigator();
 
 export default function BottomTabs() {
   const Tab = createBottomTabNavigator();
-  const {language} = useSelector(state => state.common);
+  const {language, } = useSelector(state => state.common);
+
 
   useEffect(() => {
     i18n.changeLanguage(language);
@@ -62,10 +65,11 @@ export default function BottomTabs() {
     <Tab.Navigator
       initialRouteName={Tab_screens[0].name}
       screenOptions={{
+        lazy: false,
         headerShown: false,
-        headerTitle: '',
         tabBarShowLabel: true,
-        tabBarStyle: styles.container,
+        tabBarActiveTintColor: '#000',
+        tabBarStyle: styles.container 
       }}>
       {Tab_screens.map((item, index) => (
         <Tab.Screen
@@ -104,10 +108,13 @@ function ProfileStack() {
 }
 function TabBarIcon({icon, focused}) {
   return (
-    <IconF name={icon} style={[styles.icon, focused && styles.selectedTab]} />
+    <View >
+      <Text style={[{width: 0.12 * width },focused ? styles.activeBar : styles.noActiveBar]}/>
+      <IconF name={icon} style={[styles.icon,focused ? styles.active : styles.noActive ]} />
+    </View>
   );
 }
 
 function TabBarLabel({label, focused}) {
-  return <Text style={styles.label}>{i18n.t(label)}</Text>;
+  return <Text style={[styles.label, focused ? styles.active : styles.noActive]}>{i18n.t(label)}</Text>;
 }

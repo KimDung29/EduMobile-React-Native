@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import images from './images';
 import icons from './icons';
 import {
@@ -10,6 +11,7 @@ import {
   TEXTS,
   BORDERS,
   SHADOWS,
+  bgColor, textColor,borderColor, TEXT, FLEX, BORDER,
 } from './theme';
 
 export {
@@ -24,4 +26,5 @@ export {
   TEXTS,
   BORDERS,
   SHADOWS,
+  bgColor, textColor,borderColor, TEXT, FLEX, BORDER,
 };

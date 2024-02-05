@@ -1,19 +1,17 @@
+/* eslint-disable prettier/prettier */
 import {
   View,
   Text,
-  Image,
   ScrollView,
-  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
-import {icons} from '../../constants';
 import styles from './style';
 import {useSelector} from 'react-redux';
 import Client from '../../api/client';
 import {UseMutationHook} from '../../hook/useQueryHooks';
-import i18n from '../../config/translations';
 import Form from '../../components/common/form';
 import PageHeader from '../../components/common/page_header';
+import { useTranslation } from 'react-i18next';
 
 const FORM_REGISTER = [
   {
@@ -47,6 +45,7 @@ const FORM_REGISTER = [
 ];
 
 const Register = ({navigation}) => {
+  const {t} = useTranslation();
   const [error, setError] = useState('');
   const {isDarkMode} = useSelector(state => state.common);
   const [values, setValues] = useState({
@@ -56,8 +55,6 @@ const Register = ({navigation}) => {
     confirm_password: '',
     agreeToThePolicy: false,
   });
-  const {lang} = useSelector(state => state.language);
-  i18n.changeLanguage(lang);
   const dynamicStyles = styles({isDarkMode});
 
   const handleChangeInput = (fieldName, text) => {
@@ -84,12 +81,12 @@ const Register = ({navigation}) => {
     if (data?.status >= 400) {
       // console.log('register err: ', data);
       setError(data?.data?.message);
-      navigation.navigate('register');
+      navigation.navigate('RegisterScreen');
     }
     if (data?.status === 200) {
       if (data?.data?.token !== null) {
         // console.log('register suss: ', data?.data);
-        navigation.navigate('login');
+        navigation.navigate('LoginScreen');
       }
     }
   };
@@ -101,15 +98,16 @@ const Register = ({navigation}) => {
         title={''}
         navigation={navigation}
       />
-      <KeyboardAvoidingView
-        style={dynamicStyles.keyboard}
-        behavior="padding"
-        enabled>
-        <ScrollView showsVerticalScrollIndicator={false}>
+
+        <ScrollView
+        bounces={false}
+        keyboardShouldPersistTaps="handled"
+         showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingBottom: 30}}
+          >
           <View style={dynamicStyles.wrapper}>
-            <Image source={icons.graduation} style={dynamicStyles.icon} />
             <Text style={dynamicStyles.title}>
-              {i18n.t('registerScreen.title')}
+              {t('registerScreen.title')}
             </Text>
 
             <Form
@@ -124,7 +122,6 @@ const Register = ({navigation}) => {
             />
           </View>
         </ScrollView>
-      </KeyboardAvoidingView>
     </View>
   );
 };

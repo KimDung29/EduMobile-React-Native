@@ -1,29 +1,31 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {COLORS, PADDINGS, MARGINS, TEXTS, MODES} from '../../../constants';
+import { MODES, MODE, FLEX, TEXT, bgColor} from '../../../constants';
 
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
-    // Page header
     container: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      borderBottomWidth: 1,
-      borderBlockColor: !isDarkMode ? 'transparent' : COLORS.gray2,
-      backgroundColor: !isDarkMode ? MODES.black : COLORS.white,
-      paddingVertical: PADDINGS.small,
-      paddingHorizontal: PADDINGS.small,
+      ...FLEX.rowBetween,
+      padding: 10,
+    },
+    backIcon: {
+      width: 40,
+      height: 40,
+      backgroundColor: bgColor(!isDarkMode),
+      borderRadius: 50,
+      ...FLEX.columnCenter,
     },
     iconWrapper: {
       justifyContent: 'center',
       alignItems: 'center',
     },
     title: {
-      ...TEXTS.xMediumHeader(isDarkMode),
+      ...TEXT.text20(isDarkMode),
+      fontSize: 24,
     },
 
     icon: {
-      ...TEXTS.mediumContent(isDarkMode),
+      ...TEXT.text20(!isDarkMode),
     },
   });
 

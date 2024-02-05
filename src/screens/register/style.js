@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
   MODES,
@@ -9,6 +10,10 @@ import {
   TEXTS,
   BORDERS,
   SHADOWS,
+  TEXT,
+  FLEX,
+  bgColor,
+
 } from '../../constants';
 
 import {Dimensions} from 'react-native';
@@ -19,26 +24,20 @@ const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: bgColor(isDarkMode),
     },
-    keyboard: {
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-    },
+
     wrapper: {
       justifyContent: 'center',
       alignItems: 'center',
-      paddingBottom: PADDINGS.large,
-      backgroundColor: !isDarkMode ? MODES.black : MODES.white,
-      height: height * 0.98,
     },
     icon: {
       width: width * 0.2,
       height: height * 0.1,
-      tintColor: !isDarkMode ? MODES.white : MODES.yellow,
+      tintColor: !isDarkMode ? "white" : "yellow",
     },
     title: {
-      ...TEXTS.xLargeHeader(isDarkMode),
+      ...TEXT.text26(isDarkMode),
     },
   });
 export default styles;

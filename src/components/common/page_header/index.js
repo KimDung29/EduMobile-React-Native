@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
@@ -16,7 +17,8 @@ const PageHeader = ({navigation, iconLeft, title, iconRight}) => {
         {iconLeft ? (
           <>
             <TouchableOpacity
-              onPress={() => navigation.dispatch(CommonActions.goBack())}>
+              style={dynamicStyles.backIcon}
+              onPress={() => navigation.goBack()}>
               <Icon name="arrow-back-outline" style={dynamicStyles.icon} />
             </TouchableOpacity>
           </>
