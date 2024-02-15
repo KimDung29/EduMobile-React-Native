@@ -8,6 +8,7 @@ const commonSlice = createSlice({
     isLoading: false,
     isLoadMore: false,
     language: 'en',
+    lastPage: true,
   },
   reducers: {
     toggleTheme: state => {
@@ -22,9 +23,12 @@ const commonSlice = createSlice({
     setLanguage: (state, action) => {
       state.language = action.payload;
     },
+    setLastPage: (state, action) => {
+      state.lastPage = action.payload;
+    },
 
   },
 });
 
-export const {toggleTheme, setIsLoading,setIsLoadMore, setLanguage} = commonSlice.actions;
+export const {toggleTheme, setIsLoading,setIsLoadMore, setLanguage, setLastPage} = commonSlice.actions;
 export default commonSlice.reducer;

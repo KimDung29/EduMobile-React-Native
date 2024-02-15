@@ -23,10 +23,10 @@ const Courses = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const [dataCourse, setDataCourse] = useState([]);
   const [dataCate, setDataCate] = useState([]);
-  const cate = 'category';
+  const cate = 'category courses';
   const [allList, setAllList] = useState(false);
 
-  const { isDarkMode, isLoading, isLoadMore } = useSelector(state => state.common);
+  const { isDarkMode, isLoading, isLoadMore, lastPage } = useSelector(state => state.common);
   const dynamicStyles = styles({ isDarkMode });
 
   const [page, setPage] = useState(1);
@@ -37,33 +37,41 @@ const Courses = ({ navigation, route }) => {
     per_page: perPage,
     category: filterId === "all" ? '' : filterId,
   };
-
   const { data, refetch } = useDataFetching('courses', Client.courses, courseParams);
 
-  const { data: categoryData } = useDataFetching('categories', Client.categoryFilter, cate);
+  const cateParams = {};
+  const { data: categoryData } = useDataFetching('categories', Client.categoryFilter, cateParams, cate);
+
 
   useEffect(() => {
     setDataCourse(data);
     setDataCate(categoryData);
     setAllList(!filterId || filterId === 'all' ? true : false);
-    // When isLoadMore is true, refetch data
-    if (isLoadMore) {
-      setPage(page + 1)
-      refetch();
-      dispatch(setIsLoadMore(false)); // Reset isLoadMore flag after triggering the refetch
+
+  }, [categoryData, data, filterId]);
+
+  useEffect(() => {
+    let timer;
+
+    if (!lastPage && isLoadMore) {
+      setPage(prevPage => prevPage + 1);
+      timer = setTimeout(() => {
+        refetch();
+      }, 500);
     }
-  }, [isLoadMore, refetch, dispatch, data, data?.length, page, filterId, categoryData]);
+    if (lastPage && isLoadMore) {
+      dispatch(setIsLoadMore(false));
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [lastPage, isLoadMore, refetch, dispatch]);
 
 
   useEffect(() => {
-    if (filterId || filterId === 'all') {
-      setPage(1);
-      setTimeout(() => {
-        refetch();
-      }, 100);
-
-    }
-  }, [filterId, refetch]);
+    courseParams.page = 1;
+    refetch();
+  }, [filterId]);
 
   const onScroll = ({ nativeEvent }) => {
     const { layoutMeasurement, contentOffset, contentSize } = nativeEvent;
@@ -91,11 +99,11 @@ const Courses = ({ navigation, route }) => {
         }}
         style={[
           allList && item.id === 'all' ? dynamicStyles.selected :
-          !allList && filterId !== 'all' &&
-          filterId === item.id ? dynamicStyles.selected :
-          dynamicStyles.normal(randomColor(index)), 
+            !allList && filterId !== 'all' &&
+              filterId === item.id ? dynamicStyles.selected :
+              dynamicStyles.normal(randomColor(index)),
           dynamicStyles.touchBtn
-          ]}>
+        ]}>
         <Text style={{ color: '#fff' }}>{item?.name}</Text>
       </TouchableOpacity>
     );
@@ -118,7 +126,7 @@ const Courses = ({ navigation, route }) => {
               keyExtractor={item => item.id}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: 10 , marginLeft: 8}}
+              contentContainerStyle={{ paddingBottom: 10, marginLeft: 8 }}
             />
             <ScrollView
               contentContainerStyle={{ paddingBottom: 220 }}

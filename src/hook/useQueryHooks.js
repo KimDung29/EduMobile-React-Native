@@ -3,8 +3,8 @@
 /* eslint-disable prettier/prettier */
 import {useMutation, useQuery} from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLoadMore, setIsLoading } from '../redux/slice/commonSlice';
-import { useEffect, useState } from 'react';
+import { setIsLoadMore, setIsLoading, setLastPage } from '../redux/slice/commonSlice';
+import { useState } from 'react';
 
 // Fetching data
 export function useDataFetching(key, getData, params = {}, cate) {
@@ -14,9 +14,6 @@ export function useDataFetching(key, getData, params = {}, cate) {
 
   return useQuery(key, async () => {
     !isLoadMore && dispatch(setIsLoading(true));
-
-    if(params?.page === 1)  {dispatch(setIsLoadMore(false));}
-    if (params?.page > 1) {dispatch(setIsLoadMore(true));}
 
     const response = await getData(params);
 
@@ -29,19 +26,34 @@ export function useDataFetching(key, getData, params = {}, cate) {
       }
 
       let newData;
-      if ( params?.page === 1) {
-        setData(response.data);
-        if(cate) {
-          newData = [{id: 'all', name: 'All'}, ...response.data];
-        }
-        else {
-          newData = response.data;
-        }
+      // First request
+      if(cate === 'category courses') {
+        newData = [{id: 'all', name: 'All'}, ...response.data];
+      }else  {
+        dispatch(setLastPage(false));
+        newData = response.data;
       }
-       else {
+
+      // Handle load more
+      if ( params?.page === 1) {
+        dispatch(setIsLoadMore(false));
+        dispatch(setLastPage(false));
+
+        setData(response.data);
+        newData = response.data;
+      }
+      else if ( params?.page > 1) {
+        dispatch(setIsLoadMore(true));
+        if(response.data.length < params?.per_page) {
+          dispatch(setLastPage(true));
+        }else{
+          dispatch(setLastPage(false));
+        }
+
         // If response.data is an empty array or not an array, keep the existing data
         if (response.data.length === 0 || !Array.isArray(response.data)) {
           dispatch(setIsLoading(false));
+
           newData = [...data];
         }
         // If response.data is an array and has elements, update the state
@@ -50,6 +62,7 @@ export function useDataFetching(key, getData, params = {}, cate) {
           setData(prev => [...prev, ...uniqueData]);
           newData = [...data, ...uniqueData];
         }
+        dispatch(setIsLoadMore(false));
       }
 
       !isLoadMore && dispatch(setIsLoading(false));
