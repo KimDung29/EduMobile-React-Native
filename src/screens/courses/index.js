@@ -14,7 +14,6 @@ import PageHeader from '../../components/common/page_header';
 import { useTranslation } from 'react-i18next';
 import { setIsLoadMore } from '../../redux/slice/commonSlice';
 import { randomColor } from '../../components/util/util';
-import { all } from 'axios';
 
 const Courses = ({ navigation, route }) => {
   const { t } = useTranslation();
@@ -69,6 +68,7 @@ const Courses = ({ navigation, route }) => {
 
 
   useEffect(() => {
+    setPage(1);
     courseParams.page = 1;
     refetch();
   }, [filterId]);

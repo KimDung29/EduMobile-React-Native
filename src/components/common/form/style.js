@@ -2,13 +2,6 @@
 /* eslint-disable no-shadow */
 import {StyleSheet} from 'react-native';
 import {
-  MODES,
-  PADDINGS,
-  MARGINS,
-  SIZES,
-  TEXTS,
-  COLORS,
-  bgColor,
   TEXT,
   BORDER
 } from '../../../constants';
@@ -40,7 +33,8 @@ const styles = ({isDarkMode}) =>
     },
     textInput: isDarkMode => ({
       ...BORDER.ra8_w0(isDarkMode),
-      ...TEXT.text14(isDarkMode),
+      // ...TEXT.text14(!isDarkMode),
+      color: isDarkMode ? '#000' : '#fff',
       padding: 16,
       backgroundColor: !isDarkMode ? '#ccc' : 'yellow',
     }),

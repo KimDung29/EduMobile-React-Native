@@ -1,16 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/react-in-jsx-scope */
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './style';
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
 import {FlatList} from 'react-native';
-import {SIZES, icons} from '../../../../constants';
+import {icons} from '../../../../constants';
 import FastImage from 'react-native-fast-image';
-import SocialMediaLink from '../../social_media_link';
-import i18n from '../../../../config/translations';
 import {useDataFetching} from '../../../../hook/useQueryHooks';
-import {useEffect} from 'react';
-import {setIsLoading} from '../../../../redux/slice/commonSlice';
 import { useTranslation } from 'react-i18next';
 
 const Instructor = ({navigation, title, queryKey, path}) => {
@@ -56,7 +53,7 @@ const Instructor = ({navigation, title, queryKey, path}) => {
               ) : null
             }
             keyExtractor={item => item.name}
-            contentContainerStyle={{columnGap: SIZES.small}}
+            contentContainerStyle={{columnGap: 10}}
             showsHorizontalScrollIndicator={false}
             horizontal
           />

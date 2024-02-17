@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   overlay: {
     width,
     height,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 0,

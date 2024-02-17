@@ -28,8 +28,8 @@ const MainApp = () => {
             flex: 1,
           }}>
           <NavigationContainer>
+            {/* React Query Provider */}
             <QueryClientProvider client={queryClient}>
-              {/* React Query Provider */}
               <Stack.Navigator screenOptions={commonScreenOptions}>
                 <Stack.Screen name="RootScreen" component={RootScreen} />
               </Stack.Navigator>

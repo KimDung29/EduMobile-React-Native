@@ -1,107 +1,8 @@
 /* eslint-disable no-shadow */
 /* eslint-disable prettier/prettier */
-import {store} from '../redux/store';
-const currentState = store.getState();
-const {isDarkMode} = currentState.common;
-
-
-const COLORS = {
-  primary: '#312651',
-  secondary: '#444262',
-  tertiary: '#FF7754',
-
-  gray: '#83829A',
-  gray2: '#C1C0C8',
-  gray3: '#CCCCCC',
-  gray4: '#B7AFAF6B',
-
-  red: '#FF0000',
-
-  white: '#FFFFFF',
-  lightWhite: '#FAFAFC',
-
-  yellow: '#ffd900',
-  black: '#000000',
-
-  blue: '#0000FF',
-  blue2: '#0066FF',
-
-  tabBarActiveTintColor: '#0000FF',
-};
-
-const PADDINGS = {
-  tiny: 4,
-  xTiny: 6,
-  xxTiny: 8,
-  small: 10,
-  xSmall: 12,
-  xxSmall: 14,
-  medium: 16,
-  xMedium: 18,
-  xxMedium: 20,
-  large: 24,
-  xLarge: 32,
-  xxLarge: 40,
-  xxxLarge: 50,
-};
-
-const MARGINS = {
-  tiny: 4,
-  xTiny: 6,
-  xxTiny: 8,
-  small: 10,
-  xSmall: 12,
-  xxSmall: 14,
-  medium: 16,
-  xMedium: 18,
-  xxMedium: 20,
-  large: 24,
-  xLarge: 32,
-  xxLarge: 40,
-  xxxLarge: 50,
-};
-
-const SIZES = {
-  tiny: 4,
-  xTiny: 6,
-  xxTiny: 8,
-  small: 10,
-  xSmall: 12,
-  xxSmall: 14,
-  xxxSmall: 15,
-  medium: 16,
-  xMedium: 18,
-  xxMedium: 20,
-  large: 24,
-  xLarge: 32,
-  xxLarge: 40,
-  xxxLarge: 50,
-};
-
-const MODES = {
-  white: '#FFFFFF',
-  yellow: '#ffd900',
-  black: '#2a2929c0',
-  gray2: '#C1C0C8',
-  green: '#008000',
-};
-const DARKMODE = {
-  white: '#FFFFFF',
-  yellow: '#ffd900',
-  black: '#2a2929c0',
-  gray2: '#C1C0C8',
-  green: '#008000',
-}
-
-const LIGHTMODE = {
-  white: '#FFFFFF',
-  black: '#000',
-}
 
 const FONTS = {
-  regular: 'DMRegular',
-  medium: 'DMMedium',
-  bold: 'DMBold',
+  regular: 'Poppins',
 };
 
 const MODE = {
@@ -113,9 +14,9 @@ const MODE = {
   lightBorder: '#C1C0C8',
 };
 
- const bgColor = (isDarkMode) => isDarkMode ? MODE.darkBg : MODE.lightBg;
- const textColor = (isDarkMode) => isDarkMode ? MODE.darkText : MODE.lightText;
- const borderColor = (isDarkMode) => isDarkMode ? MODE.darkBorder : MODE.lightBorder;
+const bgColor = (isDarkMode) => isDarkMode ? MODE.darkBg : MODE.lightBg;
+const textColor = (isDarkMode) => isDarkMode ? MODE.darkText : MODE.lightText;
+const borderColor = (isDarkMode) => isDarkMode ? MODE.darkBorder : MODE.lightBorder;
 
 const TEXT = {
   text12: isDarkMode => ({
@@ -228,61 +129,7 @@ const BORDER = {
     borderColor: borderColor(isDarkMode),
   }),
 }
-const TEXTS = {
-  smallContent: isDarkMode => ({
-    fontSize: SIZES.xSmall,
-    color: !isDarkMode ? COLORS.white : COLORS.black,
-  }),
-  mediumContent: isDarkMode => ({
-    fontSize: SIZES.medium,
-    color: !isDarkMode ? COLORS.white : COLORS.black,
-  }),
-  boldContent: isDarkMode => ({
-    fontWeight: '600',
-    fontSize: SIZES.medium,
-    color: !isDarkMode ? COLORS.white : COLORS.black,
-  }),
-  mediumHeader: isDarkMode => ({
-    fontWeight: '700',
-    fontSize: SIZES.medium,
-    color: !isDarkMode ? COLORS.black : COLORS.black,
-  }),
-  xMediumHeader: isDarkMode => ({
-    fontWeight: '700',
-    fontSize: SIZES.xMedium,
-    color: !isDarkMode ? COLORS.white : COLORS.black,
-  }),
-  xLargeHeader: isDarkMode => ({
-    fontWeight: '700',
-    color: !isDarkMode ? COLORS.white : COLORS.black,
-    fontSize: SIZES.xLarge,
-  }),
-};
 
-
-const BORDERS = {
-  small: {
-    borderTopWidth: 0,
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    borderColor: 'transparent',
-  },
-  middle: {
-    borderWidth: 1,
-    borderRadius: 18,
-    borderColor: COLORS.gray4,
-  },
-  middle2: {
-    borderWidth: 1,
-    borderRadius: 18,
-    borderColor: '#bfbabab1',
-  },
-  middle3: {
-    borderWidth: 1,
-    borderRadius: 18,
-    borderColor: 'transparent',
-  },
-};
 
 const SHADOWS = {
   small: {
@@ -317,24 +164,30 @@ const SHADOWS = {
   },
 };
 
-
-
+const BUTTONBOTTOM = {
+  wrap: {
+    padding: 12,
+    backgroundColor: "#fff",
+    position: 'absolute',
+    width: '100%',
+    bottom: 60,
+  },
+  text: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    padding: 10,
+    backgroundColor: '#000',
+    borderRadius: 10,
+  }
+};
 
 export {
-  MODES,
-  COLORS,
-  PADDINGS,
-  MARGINS,
-  SIZES,
-  FONTS,
-  TEXTS,
-  BORDERS,
   SHADOWS,
-  DARKMODE,
-  LIGHTMODE,
   MODE,
   TEXT,
   FLEX,
   BORDER,
-  bgColor
+  bgColor,
+  BUTTONBOTTOM,
 };

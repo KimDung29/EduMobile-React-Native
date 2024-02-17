@@ -2,18 +2,6 @@
 import {config} from './config';
 
 const Client = {
-  // Course page
-  courses: (params = {}, randomVersion = true) =>
-    config.get('/wp-json/learnpress/v1/courses', {...params}, randomVersion),
-
-  course: id => config.get(`/wp-json/learnpress/v1/courses/${id}`),
-
-  // Registration page
-  register: params =>
-    config.post('/wp-json/learnpress/v1/token/register', params),
-
-  login: params => config.post('/wp-json/learnpress/v1/token', params),
-
   // Home page
   categoryFilter: () =>
     config.get(
@@ -47,6 +35,19 @@ const Client = {
     config.get('/wp-json/learnpress/v1/users', {
       roles: ['lp_teacher', 'administrator'],
     }),
+
+  // Course page
+  courses: (params = {}, randomVersion = true) =>
+    config.get('/wp-json/learnpress/v1/courses', {...params}, randomVersion),
+
+  course: id => config.get(`/wp-json/learnpress/v1/courses/${id}`),
+
+  // Registration page
+  register: params =>
+    config.post('/wp-json/learnpress/v1/token/register', params),
+
+  login: params => config.post('/wp-json/learnpress/v1/token', params),
+
 
   addRemoveWishlist: params =>
     config.post('/wp-json/learnpress/v1/wishlist/toggle', params),

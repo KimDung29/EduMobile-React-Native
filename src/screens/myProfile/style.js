@@ -1,79 +1,66 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {COLORS, MARGINS, MODES, PADDINGS, TEXTS, SIZES} from '../../constants';
+import {FLEX, TEXT, BORDER,
+   bgColor} from '../../constants';
 import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
-      backgroundColor: !isDarkMode ? MODES.black : MODES.white,
-      height: '100%',
-    },
-    needLoginContainer: {
-      backgroundColor: !isDarkMode ? MODES.black : MODES.white,
-      height: '100%',
-    },
-    needLoginText: {
-      paddingVertical: height * 0.35,
-      textAlign: 'center',
-      color: !isDarkMode ? MODES.white : MODES.black,
-    },
-    wrapper: {
-      marginTop: MARGINS.small,
-    },
-    items: {
-      flexDirection: 'row',
-      justifyContent: '',
-      alignItems: 'center',
-      paddingLeft: width * 0.35,
-      paddingTop: 15,
-    },
-    touchItem: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
+      flex: 1,
+      backgroundColor: bgColor(isDarkMode),
     },
 
-    profileIcon: bgColor => ({
-      fontSize: SIZES.medium,
-      padding: PADDINGS.xTiny,
-      borderRadius: 6,
-      color: !isDarkMode ? COLORS.blue : COLORS.white,
-      backgroundColor: !isDarkMode ? MODES.white : MODES[bgColor],
-    }),
-    profileText: {
-      ...TEXTS.mediumContent(isDarkMode),
-      marginLeft: MARGINS.small,
+    wrapper: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    // USER INFORMATION
+    textCommon: {
+      ...TEXT.text16(isDarkMode),
+    },
     userInfoHeader: {
-      flexDirection: 'row',
-      paddingHorizontal: PADDINGS.medium,
+      ...FLEX.columnCenter,
+      marginBottom: 12,
     },
     userInfoHeaderImg: {
-      width: 40,
-      height: 40,
-      borderRadius: 50,
-      marginRight: MARGINS.large,
-      borderColor: COLORS.gray2,
-      borderWidth: 1,
+      width: 60,
+      height: 60,
+      resizeMode: 'cover',
+      ...BORDER.ra50_w1(isDarkMode),
+      marginTop: 10,
+    },
+    textWrap: {
+      ...FLEX.columnCenter,
+      marginTop: 5,
     },
     userInfoText: {
-      fontSize: SIZES.xSmall,
-      color: !isDarkMode ? COLORS.white : COLORS.black,
+      ...TEXT.text14(isDarkMode),
     },
-    userInfoOverView: {
-      margin: MARGINS.medium,
-      padding: PADDINGS.medium,
-      // backgroundColor: COLORS.white,
-      color: COLORS.black,
-      borderWidth: 1,
-      borderColor: !isDarkMode ? COLORS.gray : 'transparent',
-      borderRadius: SIZES.small,
+    items: {
+      marginHorizontal: 16,
+      marginTop: 12,
+      paddingBottom: 12,
+      borderBottomWidth: 0.5,
+      borderBottomColor: '#ccc',
     },
-    xMediumHeader: {
-      paddingTop: PADDINGS.medium,
-      ...TEXTS.boldContent(isDarkMode),
+    profileListBtn: {
+      ...FLEX.rowBetween,
+    },
+    touchItem: {
+      ...FLEX.rowStart,
+    },
+    profileIcon: {
+      ...TEXT.text20(isDarkMode),
+      marginRight: 10,
+
+    },
+    profileText: {
+      ...TEXT.text16(isDarkMode)
+    },
+    arrowRight: {
+      ...TEXT.text20(isDarkMode),
     },
   });
 export default styles;

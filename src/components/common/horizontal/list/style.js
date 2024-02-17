@@ -1,15 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
-  MODES,
-  COLORS,
-  PADDINGS,
-  MARGINS,
-  SIZES,
-  FONTS,
-  TEXTS,
-  BORDERS,
-  SHADOWS,
   TEXT,
 } from '../../../../constants';
 

@@ -1,17 +1,19 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import { MODES, MODE, FLEX, TEXT, bgColor} from '../../../constants';
+import {  FLEX, TEXT, bgColor} from '../../../constants';
 
 const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
       ...FLEX.rowBetween,
-      padding: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 16,
     },
     backIcon: {
       width: 40,
       height: 40,
-      backgroundColor: bgColor(!isDarkMode),
+      borderWidth:1,
+      borderColor: bgColor(!isDarkMode),
       borderRadius: 50,
       ...FLEX.columnCenter,
     },
@@ -25,7 +27,7 @@ const styles = ({isDarkMode}) =>
     },
 
     icon: {
-      ...TEXT.text20(!isDarkMode),
+      ...TEXT.text20(isDarkMode),
     },
   });
 

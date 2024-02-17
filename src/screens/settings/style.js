@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {COLORS, MARGINS, PADDINGS, TEXTS} from '../../constants';
+import {TEXT, bgColor, FLEX} from '../../constants';
 import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -8,24 +9,31 @@ const styles = ({isDarkMode}) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: COLORS.white,
+      backgroundColor: bgColor(isDarkMode),
     },
     items: {
-      padding: PADDINGS.small,
-      marginVertical: MARGINS.small,
-      marginHorizontal: MARGINS.xTiny,
+      marginHorizontal: 16,
+      marginTop: 16,
+      paddingBottom: 16,
+      borderBottomWidth: 0.5,
+      borderBottomColor: '#ccc',
     },
-    content: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+    profileListBtn: {
+      ...FLEX.rowBetween,
     },
-    text: {
-      ...TEXTS.mediumContent(isDarkMode),
+    touchItem: {
+      ...FLEX.rowStart,
     },
-    chevronIcon: {
-      color: 'green',
-      fontSize: 18,
+    profileIcon: {
+      ...TEXT.text20(isDarkMode),
+      marginRight: 10,
+
+    },
+    profileText: {
+      ...TEXT.text16(isDarkMode)
+    },
+    arrowRight: {
+      ...TEXT.text20(isDarkMode),
     },
   });
 

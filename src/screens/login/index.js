@@ -6,13 +6,10 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  ScrollView,
-  KeyboardAvoidingView,
 } from 'react-native';
 import {icons} from '../../constants';
 import styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
-import i18n from '../../config/translations';
 import Client from '../../api/client';
 import {UseMutationHook} from '../../hook/useQueryHooks';
 import {setUser} from '../../redux/slice/userSlice';
@@ -20,7 +17,7 @@ import PageHeader from '../../components/common/page_header';
 import Form from '../../components/common/form';
 import { useTranslation } from 'react-i18next';
 
-const FormLogin = [
+const FORM_LOGIN = [
   {
     label: 'loginScreen.usernamePlaceholder',
     name: 'username',
@@ -95,7 +92,7 @@ const Login = ({navigation}) => {
         <Form
           buttonTitle={'login'}
           onSubmitEditing={handleLogin}
-          formData={FormLogin}
+          formData={FORM_LOGIN}
           onChangeText={(fieldName, text) =>
             handleChangeInput(fieldName, text)
           }
@@ -104,17 +101,17 @@ const Login = ({navigation}) => {
         />
 
         <TouchableOpacity onPress={() => {}}>
-          <Text style={dynamicStyles.text}>
+          <Text style={[dynamicStyles.text,{textDecorationLine: 'underline' } ]}>
             {t('loginScreen.forgotPassword')}
           </Text>
         </TouchableOpacity>
 
         <View style={dynamicStyles.switchPage}>
-          <Text style={dynamicStyles.linkToPage}>
+          <Text style={[dynamicStyles.linkToPage, {textDecorationLine: 'none' }]}>
             {t('loginScreen.registerText')}
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-            <Text style={dynamicStyles.linkToPage}>
+            <Text style={[dynamicStyles.linkToPage]}>
               {t('loginScreen.register')}
             </Text>
           </TouchableOpacity>

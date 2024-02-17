@@ -124,16 +124,7 @@ const Home = ({navigation}) => {
                 </TouchableOpacity>
               </>
             ) : (
-              <TouchableOpacity onPress={handleLogout}>
-                <Text style={dynamicStyles.textContent}>
-                  {t('logout')}
-                </Text>
-              </TouchableOpacity>
-            )}
-          </View>
-
-          {user.token ? (
-            <View style={dynamicStyles.userInfoHeader}>
+              <View style={dynamicStyles.userInfoHeader}>
               <Image
                 source={{
                   uri:
@@ -149,7 +140,8 @@ const Home = ({navigation}) => {
                 <Text style={dynamicStyles.userInfoText}>{user.user_email}</Text>
               </View>
             </View>
-          ) : null}
+            )}
+          </View>
 
         <FlatList
           data={dataCategory}

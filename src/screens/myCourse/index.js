@@ -3,15 +3,17 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {View, Text} from 'react-native';
-import {MODES} from '../../constants';
 import i18n from '../../config/translations';
 import PageHeader from '../../components/common/page_header';
+import styles from './style';
 
 const MyCourse = ({navigation}) => {
   const {user} = useSelector(state => state.user);
   const {isDarkMode} = useSelector(state => state.common);
+
+  const dynamicStyles = styles({isDarkMode});
   return (
-    <>
+    <View style={dynamicStyles.container}>
       <PageHeader
         iconLeft={''}
         iconRight={''}
@@ -19,31 +21,22 @@ const MyCourse = ({navigation}) => {
         navigation={navigation}
       />
       <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: !isDarkMode ? MODES.black : MODES.white,
-        }}>
+        style={dynamicStyles.wrapper}>
         <View>
           {!user.token ? (
             <Text
-              style={{
-                color: !isDarkMode ? MODES.white : MODES.black,
-              }}>
+              style={dynamicStyles.textCommon}>
               {i18n.t('needLogin')}
             </Text>
           ) : (
             <Text
-              style={{
-                color: !isDarkMode ? MODES.white : MODES.black,
-              }}>
+              style={dynamicStyles.textCommon}>
               My Course
             </Text>
           )}
         </View>
       </View>
-    </>
+    </View>
   );
 };
 

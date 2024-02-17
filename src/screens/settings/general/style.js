@@ -11,24 +11,10 @@ const styles = ({ isDarkMode }) =>
       flex: 1,
       backgroundColor: bgColor(isDarkMode),
     },
-    //  Languages
-    items: {
-      paddingVertical: 12,
-      paddingHorizontal: 16,
-      ...FLEX.rowBetween,
-    },
-    icon: {
-      ...TEXT.text20(isDarkMode),
-    },
     text: {
       ...TEXT.text16(isDarkMode),
-    },
-    updateBtn: {
-      ...BUTTONBOTTOM.wrap,
-      bottom: 5,
-    },
-    updateText: {
-      ...BUTTONBOTTOM.text,
+      textAlign: 'center',
+      marginTop: 30,
     },
   });
 

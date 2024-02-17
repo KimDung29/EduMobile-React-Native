@@ -1,16 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
-  MODES,
-  COLORS,
-  PADDINGS,
-  MARGINS,
-  SIZES,
-  FONTS,
-  TEXTS,
   BORDERS,
-  SHADOWS,
-  bgColor, textColor, TEXT, FLEX, BORDER,
+  bgColor,  TEXT, FLEX, BORDER,
 } from '../../constants';
 
 import {Dimensions} from 'react-native';
@@ -35,7 +27,6 @@ StyleSheet.create({
     // USER INFORMATION
     userInfoHeader: {
       flexDirection: 'row',
-      paddingHorizontal: 16,
     },
     userInfoHeaderImg: {
       width: 40,
@@ -67,7 +58,7 @@ StyleSheet.create({
     },
     touchBtn: {
       ...FLEX.rowBetween,
-      ...BORDERS.middle,
+      ...BORDER.ra12_w1(isDarkMode),
       paddingHorizontal: 6,
       backgroundColor: bgColor(!isDarkMode),
     },

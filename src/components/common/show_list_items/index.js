@@ -1,8 +1,8 @@
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import styles from './showListItems.style';
+import styles from './styles';
 import {useSelector} from 'react-redux';
-import {PADDINGS} from '../../../constants';
 import i18n from '../../../config/translations';
 import Icon from 'react-native-vector-icons/Ionicons';
 

@@ -4,8 +4,8 @@ import {useState} from 'react';
 import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
-import i18n from '../../../config/translations';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
 
 const Form = ({
   formData,
@@ -15,11 +15,10 @@ const Form = ({
   value,
   error,
 }) => {
+  const {t} = useTranslation();
   const {isDarkMode} = useSelector(state => state.common);
   const [isCheck, setIsCheck] = useState(false);
   const dynamicStyles = styles({isDarkMode});
-  // const {lang} = useSelector(state => state.language);
-  // i18n.changeLanguage(lang);
 
   const handleCheckbox = () => {
     setIsCheck(!isCheck);
@@ -38,17 +37,17 @@ const Form = ({
               />
             </TouchableOpacity>
             <Text style={dynamicStyles.checkboxLabel}>
-              {i18n.t(item.label)}
+              {t(item.label)}
             </Text>
           </View>
         ) : (
           <TextInputPattern
             key={`textInputPattern-${index}`}
-            label={i18n.t(item.label)}
+            label={t(item.label)}
             name={item.name}
             type={item.type}
             value={value[item.name]}
-            placeholder={i18n.t(item.placeholder)}
+            placeholder={t(item.placeholder)}
             isDarkMode={isDarkMode}
             onChangeText={text => onChangeText(item.name, text)}
           />
@@ -58,7 +57,7 @@ const Form = ({
       <TouchableOpacity
         onPress={onSubmitEditing}
         style={dynamicStyles.btnPress}>
-        <Text style={dynamicStyles.btnText}>{i18n.t(buttonTitle)}</Text>
+        <Text style={dynamicStyles.btnText}>{t(buttonTitle)}</Text>
       </TouchableOpacity>
     </View>
   );

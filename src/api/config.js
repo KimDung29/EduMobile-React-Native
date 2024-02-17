@@ -52,16 +52,10 @@ const config = {
   },
 
   delete: async (endpoint, params = {}) => {
-    let url = `${endpoint}`;
-
-    if (Object.keys(params).length > 0) {
-      url += `?${Object.keys(params)
-        .map(key => `${key}=${params[key]}`)
-        .join('&')}`;
-    }
+    const url = endpoint;
     console.debug(url);
 
-    return await api.delete(url);
+    return await api.delete(url, params);
   },
 
   multipartPost: async (endpoint, params = {}) => {

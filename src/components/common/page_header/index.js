@@ -3,7 +3,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
-import {CommonActions} from '@react-navigation/native';
 import i18n from '../../../config/translations';
 import Icon from 'react-native-vector-icons/Ionicons';
 

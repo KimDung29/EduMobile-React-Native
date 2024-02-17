@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
-import {MODES, COLORS,FLEX, PADDINGS, MARGINS,BORDER, SIZES, TEXT, MODE, bgColor} from '../../constants';
+import {FLEX, BORDER,  TEXT,  bgColor} from '../../constants';
 
 import {Dimensions} from 'react-native';
 
@@ -13,7 +13,6 @@ const styles = ({isDarkMode}) =>
       backgroundColor: bgColor(isDarkMode),
     },
     coursesWrapper: {
-      // padding: PADDINGS.xLarge,
       margin: 16,
     },
     coursesImageContainer: {

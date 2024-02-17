@@ -1,14 +1,7 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {
-  MODES,
-  COLORS,
-  PADDINGS,
-  MARGINS,
-  SIZES,
-  FONTS,
-  TEXTS,
-  BORDERS,
-  SHADOWS,
+  TEXT,
 } from '../../../constants';
 
 import {Dimensions} from 'react-native';
@@ -19,23 +12,23 @@ const styles = ({isDarkMode}) =>
   StyleSheet.create({
     // showListItem
     container: {
-      paddingVertical: PADDINGS.tiny,
+      paddingVertical: 4,
     },
     title: {
-      ...TEXTS.xMediumHeader(isDarkMode),
-      paddingVertical: PADDINGS.tiny,
-      marginVertical: MARGINS.small,
+      ...TEXT.text20(isDarkMode),
+      paddingVertical: 4,
+      marginVertical: 10,
     },
     icon: {
-      marginLeft: MARGINS.small,
-      ...TEXTS.mediumContent(isDarkMode),
+      marginLeft: 10,
+      ...TEXT.text16(isDarkMode),
     },
     iconPhone: {
-      ...TEXTS.mediumContent(isDarkMode),
+      ...TEXT.text16(isDarkMode),
     },
     text: {
-      ...TEXTS.mediumContent(isDarkMode),
-      paddingLeft: PADDINGS.small,
+      ...TEXT.text16(isDarkMode),
+      paddingLeft: 10,
     },
     touchItem: {
       flexDirection: 'row',
@@ -48,8 +41,8 @@ const styles = ({isDarkMode}) =>
     listItemWrapper: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginLeft: MARGINS.large,
-      marginVertical: MARGINS.xTiny,
+      marginLeft: 24,
+      marginVertical: 6,
     },
   });
 
