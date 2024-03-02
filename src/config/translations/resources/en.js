@@ -32,8 +32,10 @@ export default {
   },
   loginScreen: {
     title: 'Login to your account',
-    usernamePlaceholder: 'Username',
-    passwordPlaceholder: 'Password',
+    usernameLabel: 'User name',
+    passwordLabel: 'Password',
+    usernamePlaceholder: 'demo',
+    passwordPlaceholder: 'demo',
     btnLogin: 'Login',
     forgotPassword: 'Forgot your password',
     registerText: "Don't have account? ",
@@ -136,7 +138,7 @@ export default {
     deleteAccountPasswordEmpty: 'Password is required',
   },
   myOrders: {
-    title: 'My Orders',
+    title: 'My Order',
     order: 'Order',
     date: 'Date',
     status: 'Status',

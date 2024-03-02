@@ -8,20 +8,20 @@ import i18n from '../config/translations';
 import {useSelector} from 'react-redux';
 import {createStackNavigator} from '@react-navigation/stack';
 import IconF from 'react-native-vector-icons/Feather';
-import YourOrders from '../screens/yourOrders';
+import YourOrders from '../ui/screens/yourOrders';
 import {useEffect} from 'react';
-import Home from '../screens/home';
-import MyCourse from '../screens/myCourse';
-import Wishlist from '../screens/wishlist';
-import MyProfile from '../screens/myProfile';
-import Courses from '../screens/courses';
+import Home from '../ui/screens/home';
+import MyCourse from '../ui/screens/myCourse';
+import Wishlist from '../ui/screens/wishlist';
+import MyProfile from '../ui/screens/myProfile';
+import Courses from '../ui/screens/courses';
 
 const {width} = Dimensions.get('window');
 const Stack = createStackNavigator();
 
 export default function BottomTabs() {
   const Tab = createBottomTabNavigator();
-  const {language, } = useSelector(state => state.common);
+  const {language } = useSelector(state => state.common);
 
 
   useEffect(() => {

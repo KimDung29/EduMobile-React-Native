@@ -2,7 +2,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {ActivityIndicator, Dimensions, StyleSheet, View} from 'react-native';
-import AppNavigation from './screens';
+import AppNavigation from './ui/screens';
 
 const {width, height} = Dimensions.get('window');
 

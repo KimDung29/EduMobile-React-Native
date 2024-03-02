@@ -57,18 +57,6 @@ const config = {
 
     return await api.delete(url, params);
   },
-
-  multipartPost: async (endpoint, params = {}) => {
-    const url = endpoint;
-
-    const options = {
-      headers: {'Content-Type': 'multipart/form-data'},
-    };
-
-    console.debug(url);
-
-    return await api.post(url, params, options);
-  },
 };
 
 export {api, config};
